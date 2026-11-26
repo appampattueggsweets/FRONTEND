@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;600;700;900&family=Exo+2:wght@700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-dark: #582A00;
+  --color-primary: #C42F2C;
+  --color-amber: #D97706;
+  --color-gold: #F5B51B;
+  --color-bg: #FFFFFF;
+  --color-cream: #FFF4DD;
+  --color-text: #3D1E08;
+  --color-muted: rgba(61,30,8,0.55);
+  --color-card-border: rgba(196,47,44,0.12);
+  --color-card-shadow: rgba(196,47,44,0.08);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+}
+
+/* GPU Hardware Acceleration for smooth 60fps rendering */
+video, img {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+body {
+  font-family: 'Inter', 'Noto Sans Tamil', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.tamil { font-family: 'Noto Sans Tamil', sans-serif; }
+.exo { font-family: 'Exo 2', sans-serif; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-amber); border-radius: 3px; }
+
+*:focus-visible {
+  outline: 3px solid var(--color-amber);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+@media (min-width: 640px) { .container { padding: 0 1.5rem; } }
+@media (min-width: 1024px) { .container { padding: 0 2rem; } }
+
+/* ── Promo bar ── */
+.promo-bar {
+  background: linear-gradient(90deg, #582A00 0%, #C42F2C 35%, #e05c3a 65%, #C42F2C 85%, #582A00 100%);
+}
+
+/* ── Floating pill navbar ── */
+.sweets-header-pill {
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  border: 1px solid rgba(196,47,44,0.14);
+  box-shadow: 0 8px 32px rgba(88,42,0,0.14);
+}
+
+/* ── Hero slider ── */
+@keyframes sliderDotProgress {
+  from { width: 8px; }
+  to { width: 32px; }
+}
+.slider-dot-active { animation: sliderDotProgress 5s linear forwards; }
+
+/* ── Marquee / running text ── */
+@keyframes marqueeLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes marqueeRight {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+.sw-row-left  { animation: marqueeLeft  28s linear infinite; }
+.sw-row-right { animation: marqueeRight 28s linear infinite; }
+.sw-row-left:hover, .sw-row-right:hover { animation-play-state: paused; }
+
+/* ── Product cards ── */
+.product-card {
+  transition: transform 0.32s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.32s ease;
+}
+.product-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 24px 60px rgba(196,47,44,0.18);
+}
+
+/* ── Shimmer loading ── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #f5f5f5 25%, #e8e8e8 50%, #f5f5f5 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ── WhatsApp pulse ── */
+@keyframes wpPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); }
+  70%  { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+.wp-pulse { animation: wpPulse 2s infinite; }
+
+/* ── Wave SVG bottom ── */
+.wave-bottom { display: block; width: 100%; margin-bottom: -2px; }
+
+/* ── Step indicators ── */
+.step-active  { background: var(--color-primary); color: white; }
+.step-done    { background: var(--color-amber);   color: white; }
+.step-pending { background: #e0d5c0; color: #999; }
+
+/* ── Section heading underline ── */
+.section-title-line {
+  display: inline-block;
+  position: relative;
+}
+.section-title-line::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-amber));
+}
+
+/* ── Mobile bottom nav spacing ── */
+@media (max-width: 767px) {
+  .mobile-nav-spacer { padding-bottom: 64px; }
+}
