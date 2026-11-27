@@ -57,7 +57,7 @@ function StepIndicator({ current, steps }: { current: number; steps: string[] })
   const { t } = useLanguage();
   const labels = ['order.step.name', 'order.step.phone', 'order.step.pickup', 'order.step.payment'];
   return (
-    <div className="w-full max-w-md mx-auto mb-3.5 sm:mb-6 px-1 sm:px-2">
+    <div className="w-full max-w-md mx-auto mb-2 sm:mb-6 px-1 sm:px-2">
       {/* Stepper row: all 5 steps distributed across full width without overflow */}
       <div className="flex items-start justify-between w-full">
         {steps.map((_, i) => (
@@ -1403,12 +1403,12 @@ function OrderPageContent() {
         </div>
       )}
       <Header />
-      <main className="pt-1.5 pb-6 px-3 sm:py-6 sm:px-4">
+      <main className="pt-1 pb-6 px-3 sm:py-6 sm:px-4">
         <div className="max-w-md mx-auto">
-          {/* Page title */}
-          <div className="text-center mb-2.5 sm:mb-5">
+          {/* Page title - hidden on mobile to maximize viewport and keep continue buttons visible without scrolling */}
+          <div className="hidden sm:block text-center mb-5">
             <h1 className="text-2xl sm:text-3xl font-black text-[#582A00]">{t('order.title')}</h1>
-            <p className="text-[#3A1C10]/60 text-[11px] sm:text-sm mt-0.5 sm:mt-1">
+            <p className="text-[#3A1C10]/60 text-xs sm:text-sm mt-1">
               Home delivery within Villupuram City · Pickup at Villupuram Railway Station
             </p>
           </div>
@@ -1416,7 +1416,7 @@ function OrderPageContent() {
           <StepIndicator current={step} steps={STEPS} />
 
           {/* Card */}
-          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-3.5 sm:p-6 overflow-hidden">
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-3 sm:p-6 overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={step}
@@ -1476,7 +1476,7 @@ function OrderPageContent() {
           </div>
         </div>
       </main>
-      <Footer />
+      <Footer hideMobileCta />
     </div>
   );
 }

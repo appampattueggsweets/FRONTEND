@@ -47,7 +47,7 @@ function PackSizes() {
   );
 }
 
-export default function Footer() {
+export default function Footer({ hideMobileCta }: { hideMobileCta?: boolean } = {}) {
   const year = new Date().getFullYear();
   const waLink = 'https://wa.me/917871949015?text=Hi%2C%20I%20want%20to%20order%20Mutta%20Mittai!';
 
@@ -59,7 +59,7 @@ export default function Footer() {
       ═══════════════════════════════════════════════ */}
       <div
         style={{ background: '#FFFFFF', borderTop: '1px solid rgba(88,42,0,0.08)' }}
-        className="block pt-8 md:pt-10 pb-12 md:pb-16 px-4 text-center"
+        className={`${hideMobileCta ? 'hidden md:block' : 'block'} pt-8 md:pt-10 pb-12 md:pb-16 px-4 text-center`}
       >
         <p
           className="font-bold tracking-tight mx-auto mb-6 md:mb-8"
