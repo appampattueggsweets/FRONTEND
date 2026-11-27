@@ -1403,16 +1403,8 @@ function OrderPageContent() {
         </div>
       )}
       <Header />
-      <main className="py-6 px-4">
+      <main className="pt-3.5 pb-6 px-4">
         <div className="max-w-md mx-auto">
-          {/* Page title */}
-          <div className="text-center mb-5">
-            <h1 className="text-2xl sm:text-3xl font-black text-[#582A00]">{t('order.title')}</h1>
-            <p className="text-[#3A1C10]/60 text-xs sm:text-sm mt-1">
-              Home delivery within Villupuram City · Pickup at Villupuram Railway Station
-            </p>
-          </div>
-
           <StepIndicator current={step} steps={STEPS} />
 
           {/* Card */}
