@@ -57,7 +57,7 @@ function StepIndicator({ current, steps }: { current: number; steps: string[] })
   const { t } = useLanguage();
   const labels = ['order.step.name', 'order.step.phone', 'order.step.pickup', 'order.step.payment'];
   return (
-    <div className="w-full max-w-md mx-auto mb-6 px-1 sm:px-2">
+    <div className="w-full max-w-md mx-auto mb-3.5 sm:mb-6 px-1 sm:px-2">
       {/* Stepper row: all 5 steps distributed across full width without overflow */}
       <div className="flex items-start justify-between w-full">
         {steps.map((_, i) => (
@@ -109,7 +109,7 @@ function StepIndicator({ current, steps }: { current: number; steps: string[] })
       </div>
 
       {/* Mobile-only current step label badge */}
-      <div className="sm:hidden text-center mt-3">
+      <div className="sm:hidden text-center mt-2">
         <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#582A00] bg-white/80 px-3.5 py-1 rounded-full border border-[#582A00]/10 shadow-xs">
           <span className="w-2 h-2 rounded-full bg-[#C42F2C] animate-pulse" />
           Step {current + 1} of {steps.length}: <span className="text-[#C42F2C]">{t(labels[current])}</span>
@@ -345,7 +345,7 @@ function PhoneStep({
   return (
     <div>
       {!otpSent ? (
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           <div>
             <h2 className="text-xl sm:text-2xl font-black text-[#582A00]">
               Mobile & Email Verification
@@ -361,7 +361,7 @@ function PhoneStep({
               Mobile Number *
             </label>
             <div className="flex gap-2">
-              <div className="flex items-center px-3.5 py-2.5 bg-stone-100 border-2 border-stone-200 rounded-xl text-xs sm:text-sm font-bold text-stone-700">
+              <div className="flex items-center px-3.5 py-2 sm:py-2.5 bg-stone-100 border-2 border-stone-200 rounded-xl text-xs sm:text-sm font-bold text-stone-700">
                 +91
               </div>
               <input
@@ -376,7 +376,7 @@ function PhoneStep({
                 }}
                 onKeyDown={(e) => e.key === 'Enter' && sendOtp()}
                 placeholder="10-digit mobile number"
-                className="flex-1 px-3.5 py-2.5 rounded-xl border-2 border-[#582A00]/20 focus:border-[#C42F2C] outline-none text-sm sm:text-base transition-colors"
+                className="flex-1 px-3.5 py-2 sm:py-2.5 rounded-xl border-2 border-[#582A00]/20 focus:border-[#C42F2C] outline-none text-sm sm:text-base transition-colors"
                 autoComplete="tel"
                 autoFocus
               />
@@ -399,7 +399,7 @@ function PhoneStep({
               }}
               onKeyDown={(e) => e.key === 'Enter' && sendOtp()}
               placeholder="e.g. yourname@gmail.com"
-              className="w-full px-3.5 py-2.5 rounded-xl border-2 border-[#582A00]/20 focus:border-[#C42F2C] outline-none text-sm sm:text-base transition-colors"
+              className="w-full px-3.5 py-2 sm:py-2.5 rounded-xl border-2 border-[#582A00]/20 focus:border-[#C42F2C] outline-none text-sm sm:text-base transition-colors"
               autoComplete="email"
             />
             {emailErr && <p className="text-[#C42F2C] text-xs sm:text-sm mt-1 font-semibold">{emailErr}</p>}
@@ -413,7 +413,7 @@ function PhoneStep({
             type="button"
             onClick={sendOtp}
             disabled={loading}
-            className="w-full py-3 bg-[#C42F2C] text-white rounded-xl font-bold text-sm sm:text-base hover:bg-[#a82421] transition-colors disabled:opacity-50 shadow-md cursor-pointer flex items-center justify-center gap-2 mt-2"
+            className="w-full py-2.5 sm:py-3 bg-[#C42F2C] text-white rounded-xl font-bold text-sm sm:text-base hover:bg-[#a82421] transition-colors disabled:opacity-50 shadow-md cursor-pointer flex items-center justify-center gap-2 mt-1 sm:mt-2"
           >
             {loading ? (
               <>
@@ -439,7 +439,7 @@ function PhoneStep({
         /* OTP Verification Card */
         <div className="overflow-hidden rounded-2xl border border-[#582A00]/15 shadow-md bg-white">
           {/* Header with Red Gradient */}
-          <div className="bg-gradient-to-r from-[#C42F2C] to-[#8F1D1A] text-white p-4 sm:p-5 relative">
+          <div className="bg-gradient-to-r from-[#C42F2C] to-[#8F1D1A] text-white p-3.5 sm:p-5 relative">
             <div className="flex items-center justify-between mb-2">
               <button
                 type="button"
@@ -463,7 +463,7 @@ function PhoneStep({
           </div>
 
           {/* Body with 6 Segmented PIN boxes, countdown and auto-advance */}
-          <div className="p-5 sm:p-6 space-y-4 text-center">
+          <div className="p-3.5 sm:p-6 space-y-3 sm:space-y-4 text-center">
             {/* 6 Digit Input Boxes */}
             <div className="flex justify-center gap-1.5 sm:gap-2.5">
               {[0, 1, 2, 3, 4, 5].map((idx) => (
@@ -487,8 +487,8 @@ function PhoneStep({
             </div>
 
             {/* Countdown Display e.g. 05:00 */}
-            <div className="pt-1">
-              <span className="text-2xl sm:text-3xl font-black tracking-wider text-[#1F242D] block">
+            <div className="pt-0.5 sm:pt-1">
+              <span className="text-xl sm:text-3xl font-black tracking-wider text-[#1F242D] block">
                 {formatCountdown(resendTimer)}
               </span>
               <p className="text-xs text-[#582A00]/70 mt-1">
@@ -513,7 +513,7 @@ function PhoneStep({
             </div>
 
             {/* Mobile Helpful Hint Box */}
-            <div className="bg-[#FFF8EE] border border-[#F3DFC1] rounded-xl p-3 text-left">
+            <div className="bg-[#FFF8EE] border border-[#F3DFC1] rounded-xl p-2.5 sm:p-3 text-left">
               <p className="text-[11px] sm:text-xs text-[#7A4B1A] leading-relaxed">
                 💡 <strong>Tip:</strong> Please check your Gmail <strong>Inbox</strong>, <strong>Promotions</strong>, or <strong>Spam</strong> folder. The email arrives from <em>Appampattu Mutta Mittai</em>.
               </p>
@@ -526,7 +526,7 @@ function PhoneStep({
               type="button"
               onClick={() => verifyOtp(otpDigits.join(''))}
               disabled={loading || otpDigits.join('').length !== 6}
-              className="w-full py-3 sm:py-3.5 bg-[#C42F2C] hover:bg-[#a82421] text-white rounded-xl font-bold text-sm sm:text-base transition-colors disabled:opacity-50 shadow-md cursor-pointer flex items-center justify-center gap-2"
+              className="w-full py-2.5 sm:py-3.5 bg-[#C42F2C] hover:bg-[#a82421] text-white rounded-xl font-bold text-sm sm:text-base transition-colors disabled:opacity-50 shadow-md cursor-pointer flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>
@@ -603,7 +603,7 @@ function PickupStep({
   const grandTotal = items.reduce((s, it) => s + it.price * it.quantity, 0);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 sm:space-y-4">
       <div>
         <span className="text-[10px] font-bold uppercase tracking-wider text-[#D97706]">
           Step 3 of 4
@@ -615,7 +615,7 @@ function PickupStep({
 
       {/* Selected Items Summary Card */}
       {items && items.length > 0 ? (
-        <div className="bg-[#FAF7F2] border border-[#582A00]/15 rounded-xl p-3 text-xs sm:text-sm">
+        <div className="bg-[#FAF7F2] border border-[#582A00]/15 rounded-xl p-2.5 sm:p-3 text-xs sm:text-sm">
           <div className="flex items-center justify-between font-bold text-[#582A00] mb-2 pb-1.5 border-b border-[#582A00]/10">
             <span className="flex items-center gap-1.5">
               <svg className="w-4 h-4 text-[#C42F2C]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -1393,7 +1393,7 @@ function OrderPageContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFF4DD] pt-16">
+    <div className="min-h-screen bg-[#FFF4DD] pt-0 md:pt-16">
       {isOffline && (
         <div className="fixed top-0 left-0 right-0 z-50 bg-gray-900 text-white text-center text-xs font-bold py-2 px-4 flex items-center justify-center gap-2">
           <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
@@ -1403,12 +1403,12 @@ function OrderPageContent() {
         </div>
       )}
       <Header />
-      <main className="py-6 px-4">
+      <main className="pt-1.5 pb-6 px-3 sm:py-6 sm:px-4">
         <div className="max-w-md mx-auto">
           {/* Page title */}
-          <div className="text-center mb-5">
+          <div className="text-center mb-2.5 sm:mb-5">
             <h1 className="text-2xl sm:text-3xl font-black text-[#582A00]">{t('order.title')}</h1>
-            <p className="text-[#3A1C10]/60 text-xs sm:text-sm mt-1">
+            <p className="text-[#3A1C10]/60 text-[11px] sm:text-sm mt-0.5 sm:mt-1">
               Home delivery within Villupuram City · Pickup at Villupuram Railway Station
             </p>
           </div>
@@ -1416,7 +1416,7 @@ function OrderPageContent() {
           <StepIndicator current={step} steps={STEPS} />
 
           {/* Card */}
-          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-4 sm:p-6 overflow-hidden">
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-3.5 sm:p-6 overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={step}
