@@ -109,7 +109,7 @@ function StepIndicator({ current, steps }: { current: number; steps: string[] })
       </div>
 
       {/* Mobile-only current step label badge */}
-      <div className="sm:hidden text-center mt-4.5 sm:mt-3">
+      <div className="sm:hidden text-center mt-6">
         <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#582A00] bg-white/80 px-3.5 py-1 rounded-full border border-[#582A00]/10 shadow-xs">
           <span className="w-2 h-2 rounded-full bg-[#C42F2C] animate-pulse" />
           Step {current + 1} of {steps.length}: <span className="text-[#C42F2C]">{t(labels[current])}</span>
@@ -1403,7 +1403,7 @@ function OrderPageContent() {
         </div>
       )}
       <Header />
-      <main className="pt-3.5 pb-6 px-4">
+      <main className="pt-5 pb-6 px-4">
         <div className="max-w-md mx-auto">
           <StepIndicator current={step} steps={STEPS} />
 
