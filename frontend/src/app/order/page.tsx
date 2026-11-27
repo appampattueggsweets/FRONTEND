@@ -57,7 +57,7 @@ function StepIndicator({ current, steps }: { current: number; steps: string[] })
   const { t } = useLanguage();
   const labels = ['order.step.name', 'order.step.phone', 'order.step.pickup', 'order.step.payment'];
   return (
-    <div className="w-full max-w-md mx-auto mb-6 px-1 sm:px-2">
+    <div className="w-full max-w-md mx-auto mb-4 sm:mb-6 px-1 sm:px-2">
       {/* Stepper row: all 5 steps distributed across full width without overflow */}
       <div className="flex items-start justify-between w-full">
         {steps.map((_, i) => (
@@ -1023,9 +1023,9 @@ function PaymentStep({
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 sm:space-y-4">
       {/* Top Header */}
-      <div className="pb-3 border-b border-[#582A00]/10">
+      <div className="pb-2 sm:pb-3 border-b border-[#582A00]/10">
         <span className="text-[10px] font-bold uppercase tracking-wider text-[#D97706]">
           Step 4 of 4 · Final Step
         </span>
@@ -1035,8 +1035,8 @@ function PaymentStep({
       </div>
 
       {/* Professional Order Summary Card */}
-      <div className="bg-[#FAF7F2] rounded-2xl border border-[#582A00]/10 p-4 sm:p-5">
-        <div className="flex items-center justify-between mb-3 pb-2 border-b border-[#582A00]/10">
+      <div className="bg-[#FAF7F2] rounded-2xl border border-[#582A00]/10 p-3 sm:p-5">
+        <div className="flex items-center justify-between mb-2 pb-1.5 border-b border-[#582A00]/10">
           <span className="text-xs font-bold uppercase tracking-wider text-[#582A00]">
             {orderState.orderSource === 'cart' ? 'Cart Summary' : 'Order Summary'}
           </span>
@@ -1046,7 +1046,7 @@ function PaymentStep({
         </div>
 
         {/* Itemized List */}
-        <div className="space-y-2 mb-3">
+        <div className="space-y-1.5 mb-2">
           {orderState.items && orderState.items.length > 0 ? (
             orderState.items.map((it) => (
               <div key={it.id} className="flex items-center justify-between text-xs sm:text-sm">
@@ -1069,7 +1069,7 @@ function PaymentStep({
         </div>
 
             {/* Pricing breakdown & Delivery Selection */}
-            <div className="pt-2 border-t border-[#582A00]/10 space-y-1.5 text-xs text-[#582A00]/70">
+            <div className="pt-1.5 border-t border-[#582A00]/10 space-y-1 text-xs text-[#582A00]/70">
               <div className="flex justify-between">
                 <span>Items Subtotal</span>
                 <span>₹{grandTotal}</span>
@@ -1089,18 +1089,18 @@ function PaymentStep({
             </div>
 
             {/* Total Row */}
-            <div className="mt-3 pt-3 border-t-2 border-[#582A00]/15 flex items-baseline justify-between">
+            <div className="mt-2 pt-2 border-t-2 border-[#582A00]/15 flex items-baseline justify-between">
               <div>
                 <span className="text-sm font-black text-[#582A00] block">Total Payable</span>
                 <span className="text-[10px] text-[#582A00]/60">Inclusive of all taxes</span>
               </div>
-              <span className="text-2xl sm:text-3xl font-black text-[#C42F2C]">
+              <span className="text-xl sm:text-3xl font-black text-[#C42F2C]">
                 ₹{grandTotal}
               </span>
             </div>
 
             {/* Customer & Location chip */}
-            <div className="mt-3 pt-2.5 border-t border-[#582A00]/10 flex items-center justify-between text-[11px] text-[#582A00]/70 flex-wrap gap-1">
+            <div className="mt-2 pt-1.5 border-t border-[#582A00]/10 flex items-center justify-between text-[10px] sm:text-[11px] text-[#582A00]/70 flex-wrap gap-1">
               <span>Customer: {orderState.name} ({orderState.phone})</span>
               <span>
                 {orderState.deliveryMethod === 'pickup'
@@ -1114,7 +1114,7 @@ function PaymentStep({
           <button
             onClick={handleRazorpayPay}
             disabled={submitting}
-            className="w-full py-3.5 sm:py-4 bg-[#C42F2C] hover:bg-[#a82421] text-white rounded-xl font-black text-base sm:text-lg transition-all disabled:opacity-50 shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
+            className="w-full py-2.5 sm:py-4 bg-[#C42F2C] hover:bg-[#a82421] text-white rounded-xl font-black text-sm sm:text-lg transition-all disabled:opacity-50 shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
           >
             {submitting ? (
               <span className="flex items-center gap-2 text-sm sm:text-base font-bold">
@@ -1408,7 +1408,7 @@ function OrderPageContent() {
           <StepIndicator current={step} steps={STEPS} />
 
           {/* Card */}
-          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-4 sm:p-6 overflow-hidden">
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-3.5 sm:p-6 overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={step}
